@@ -52,9 +52,9 @@
     <p>
       <small>microframework used:
       <a href="http://www.slimframework.com/">Slim</a> a php microframework.
-      <a href="http://www.slimframework.com/">Toast</a> a simple CSS framework.
-      <a href="http://www.slimframework.com/">underscore.php</a> a utility-belt library.
+      <a href="http://daneden.me/toast/">Toast</a> a simple CSS framework.
       <a href="http://ender.no.de/">ender</a> the no-library library.
+      <a href="https://github.com/micheg/piqo">Fork this project on github</a>
       </small>
     </p>
 
