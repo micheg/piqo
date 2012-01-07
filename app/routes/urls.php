@@ -17,8 +17,7 @@ $app->get('/:hash', function ($hash) use ($app)
         $first_res = $qry->fetch(PDO::FETCH_ASSOC);
         if($first_res)
         {
-            //$app->response()->header('Refresh:0;' . $first_res['url']); why not work?
-            header('Refresh:0;' . $first_res['url']);
+            $app->redirect($first_res['url'], 301);
         }
         else
         {
