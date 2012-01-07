@@ -7,6 +7,7 @@ History:
 I wanted to learn *Slim* and *ender*, and I decided that the best way was a "tour de force" of twelve hours spent in documentation and some code.
 From this was born the idea of a url shortening service, because it is easy to implement.
 There is much work to do: it completely missing a part of administration, and I would like to use notorm instead of PDO.
+I need to test on internet explorer, i have coded on a linux machine (chakra rulez!) and do not have an ie now.
 This is only a small base.
 
 Implementation choices:
@@ -34,6 +35,7 @@ Todo:
 * Admin Interface
 * Switch to NotORM (<= probably)
 * bug fixing (???)
+* Testing on internet explorer
 
 .htaccss:
 ---------
