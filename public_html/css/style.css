@@ -1,0 +1,33 @@
+html, body {
+  
+}
+
+/* HEADER */
+header[role="banner"]
+{
+  background-color:#1b78bd;border-bottom:1px solid black;
+}
+	header[role="banner"] #logo {
+	  
+	}
+
+/* CONTENT */
+div[role="content"] {
+  padding-top: 1.5em;
+}
+
+/* FOOTER */
+footer[role="footer"]
+{
+  background-color:#E5E5E5;border-top:1px solid black;
+}
+
+/* MEDIA QUERIES */
+/* Mobile phones and tiny screens */
+@media screen and (max-width: 500px;) {
+  
+}
+
+.service_title {color: #FFF;}
+
+img.follow {position: absolute; top: 0; right: 0; border: 0;}
