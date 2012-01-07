@@ -40,15 +40,14 @@ Todo:
 
 I tried the following "htaccess" on many hosts including economic, and I never had any problems, then I suggest:
 
-> <IfModule mod_rewrite.c>
-> RewriteEngine On
-> RewriteBase /
-> 
-> RewriteCond %{REQUEST_FILENAME} !-f
-> RewriteCond %{REQUEST_FILENAME} !-d
-> RewriteCond %{REQUEST_URI} !=/favicon.ico
-> RewriteRule . /index.php [L]
-> </IfModule>
+    <IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !=/favicon.ico
+    RewriteRule . /index.php [L]
+    </IfModule>
 
 Of course, feel free to use your preferred version, for more information I recommend the site of *Slim*.
 
