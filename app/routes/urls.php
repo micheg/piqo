@@ -9,6 +9,7 @@ $app->get('/:hash', function ($hash) use ($app)
 {
     try
     {
+        $hash = strtolower($hash);
         $dbh = new PDO($app->config('connection.string'));
         $qry = $dbh->prepare('SELECT URL FROM URLS WHERE hash = :hash');
         $qry->bindParam(':hash',$hash,PDO::PARAM_STR);
@@ -54,6 +55,7 @@ $app->post('/short/', function() use ($app)
         else
         {
             $uniq_result = $dbh->query('SELECT id as max FROM urls WHERE   ID = (SELECT MAX(ID)  FROM urls)')->fetch(PDO::FETCH_ASSOC);
+            //$uniq_result = $dbh->query('select count(id) as max from urls')->fetch(PDO::FETCH_ASSOC);
             $next = intval($uniq_result['max']) + 36; // at least 2 char!
             $next = base_convert((string) $next, 10, 36);
             $qry = $dbh->prepare('INSERT INTO urls(hash, url) VALUES(:hash, :url)');
