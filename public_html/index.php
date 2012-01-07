@@ -3,7 +3,6 @@
 // note this is my generic app template
 // not sure using underscore in this project
 require '../vendor/Slim/Slim.php';
-require '../vendor/underscore.php';
 
 // custom setting
 $app = new Slim(array(
