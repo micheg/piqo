@@ -63,6 +63,8 @@ Todo:
 * Admin Interface
 * bug fixing (???)
 * Testing on internet explorer
+* Add the possibility of using custom short url for hash bigger then 5 chars.
+* be more social ;-)
 
 .htaccss:
 ---------
