@@ -2,9 +2,9 @@
 // Microframeworks: slim & underscore
 // note this is my generic app template
 // not sure using underscore in this project
-require_once './vendor/Slim/Slim.php';
-require_once './vendor/underscore.php';
-require_once './vendor/idiorm.php';
+require_once '../vendor/Slim/Slim.php';
+require_once '../vendor/underscore.php';
+require_once '../vendor/idiorm.php';
 
 // i now need max, probably in future min and other
 class ORM_EXT extends ORM
