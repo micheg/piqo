@@ -3,7 +3,10 @@ A URL shortening service written in php with slim microframework.
 
 News:
 -----
-I switched from pure and simple "PDO" to "idiorm" a lightweight nearly-zero-configuration object-relational mapper and fluent query builder for PHP5.
+*2012 01 08*, *BASE62*: On request, using a hashing algorithm in base62.
+So the service is no longer case insensitive.
+
+*2012 01 08*, *IDIORM*: I switched from pure and simple "PDO" to "idiorm" a lightweight nearly-zero-configuration object-relational mapper and fluent query builder for PHP5.
 Therefore, the project also requires idiorm. Download fromofficial site "idiorm.php" and copy to directory "vendor".
 I need the sql max function, and since using a row query did not seem a big improvement over the "PDO" I used an approach like this:
 
@@ -16,6 +19,7 @@ I need the sql max function, and since using a row query did not seem a big impr
         }
         public function max($column)
         {
+            if(method_exists('ORM', 'max')) return parent::max($column);
             $this->select_expr('MAX('.$column.')', 'maxvalue');
             $result = $this->find_one();
             return ($result !== false && isset($result->maxvalue)) ? (int) $result->maxvalue : 0;
@@ -36,12 +40,11 @@ This is only a small base.
 Implementation choices:
 -----------------------
 
-To facilitate the user there is no difference between hash written in uppercase or lowercase.
-For this reason we chose an algorithm for generating hashes very simple:
-He recovers from the last DB Id (integer, autoincrement) then add 1 and converts everything into base 36.
-The base 36 allows the use of letters and numbers. [0-9] and [a-z].
-You can still get a good number of URLs "shortened" even with the base 36, for example by taking a hash of 5 characters we can index:
-36 * 36 * 36 * 36 * 36-1 => 60,466,175 urls!
+I chose an algorithm for generating hashes very simple:
+He recovers from the last DB Id (integer, autoincrement) then add 1 and converts everything into base 62.
+The base 62 allows the use of letters and numbers. [0-9], [a-z] and [A-Z].
+You can still get a good number of URLs "shortened" even with the base 62, for example by taking a hash of 5 characters we can index:
+62 * 62 * 62 * 62 * 62-1 => 916.132.831 urls!
 
 Installation:
 -------------

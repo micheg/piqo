@@ -19,7 +19,6 @@
     {
         try
         {
-            $hash = strtolower($hash);
             ORM_EXT::configure($app->config('connection.string'));
             $one_url = ORM_EXT::for_table('urls')->where('hash', $hash)->find_one();
             $url = ($one_url) ? $one_url->url : null;
@@ -58,8 +57,9 @@
             }
             else
             {
-                $next = (int) ORM_EXT::for_table('urls')->max('id') + 36;
-                $next = base_convert((string) $next, 10, 36); // at least 2 char!
+                $next = (int) ORM_EXT::for_table('urls')->max('id') + 1;
+                $next = MY::base_encode($next);
+                //$next = base_convert((string) $next, 10, 36); // start from letter uppercase
                 // -- insert new record
                 $record = ORM_EXT::for_table('urls')->create();
                 $record->hash = strval($next);
