@@ -1,0 +1,5 @@
+CREATE TABLE "urls" (
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    "hash" TEXT NOT NULL,
+    "url" TEXT NOT NULL
+)
