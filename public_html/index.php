@@ -22,14 +22,15 @@
     require_once '../vendor/underscore.php';
     require_once '../vendor/idiorm.php';
     require_once '../vendor/my.php';
+    require_once '../vendor/markdown.php';
 
     // custom setting
     $app = new Slim(array(
         'log.enable' => true,
-        'log.path' => './log',
+        'log.path' => '../log',
         'log.level' => 4,
-        'templates.path' => './app/views',
-        'connection.string' => 'sqlite:./data/url.sqlite',
+        'templates.path' => '../app/views',
+        'connection.string' => 'sqlite:../data/url.sqlite',
         'service.name' => $_SERVER['SERVER_NAME'] . '/',
     ));
 
