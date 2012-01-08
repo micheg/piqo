@@ -1,6 +1,27 @@
 A URL shortening service written in php with slim microframework.
 =================================================================
 
+News:
+-----
+I switched from pure and simple "PDO" to "idiorm" a lightweight nearly-zero-configuration object-relational mapper and fluent query builder for PHP5.
+Therefore, the project also requires idiorm. Download fromofficial site "idiorm.php" and copy to directory "vendor".
+I need the sql max function, and since using a row query did not seem a big improvement over the "PDO" I used an approach like this:
+    class ORM_EXT extends ORM
+    {
+        public static function for_table($table_name)
+        {
+            parent::_setup_db();
+            return new self($table_name);
+        }
+        public function max($column)
+        {
+            $this->select_expr('MAX('.$column.')', 'maxvalue');
+            $result = $this->find_one();
+            return ($result !== false && isset($result->maxvalue)) ? (int) $result->maxvalue : 0;
+        }
+    }
+I'm not sure the best way, I must investigate.
+
 History:
 --------
 
@@ -33,7 +54,6 @@ Todo:
 -----
 
 * Admin Interface
-* Switch to NotORM (<= probably)
 * bug fixing (???)
 * Testing on internet explorer
 
