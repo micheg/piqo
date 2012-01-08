@@ -50,10 +50,12 @@
   <footer role="footer">
     <div class="wrap">
     <p>
-      <small>microframework used:
-      <a href="http://www.slimframework.com/">Slim</a> a php microframework.
-      <a href="http://daneden.me/toast/">Toast</a> a simple CSS framework.
-      <a href="http://ender.no.de/">ender</a> the no-library library.
+      <small>
+      { <a href="http://www.slimframework.com/">Slim</a> a php microframework }
+      { <a href="http://daneden.me/toast/">Toast</a> a simple CSS framework }
+      { <a href="http://ender.no.de/">ender</a> the no-library library }
+      { <a href="http://ender.no.de/">idiorm</a> a lightweight nearly-zero-configuration object-relational mapper and fluent query builder for PHP5 }
+      <hr>
       <a href="https://github.com/micheg/piqo">Fork this project on github</a>
       </small>
     </p>
