@@ -59,8 +59,6 @@
             {
                 $next = (int) ORM_EXT::for_table('urls')->max('id') + 1;
                 $next = MY::base_encode($next);
-                //$next = base_convert((string) $next, 10, 36); // start from letter uppercase
-                // -- insert new record
                 $record = ORM_EXT::for_table('urls')->create();
                 $record->hash = strval($next);
                 $record->url = $url;
