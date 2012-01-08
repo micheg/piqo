@@ -3,6 +3,7 @@ A URL shortening service written in php with slim microframework.
 
 News:
 -----
+
 *2012 01 08*, *BASE62*: On request, using a hashing algorithm in base62.
 So the service is no longer case insensitive.
 
@@ -43,7 +44,8 @@ Implementation choices:
 I chose an algorithm for generating hashes very simple:
 He recovers from the last DB Id (integer, autoincrement) then add 1 and converts everything into base 62.
 The base 62 allows the use of letters and numbers. [0-9], [a-z] and [A-Z].
-You can still get a good number of URLs "shortened" even with the base 62, for example by taking a hash of 5 characters we can index:
+You can still get a good number of URLs "shortened" even with the base 62, for example by taking a hash of 5 characters we can index: 
+
 62 * 62 * 62 * 62 * 62-1 => 916.132.831 urls!
 
 Installation:
@@ -80,6 +82,7 @@ Of course, feel free to use your preferred version, for more information I recom
 
 References:
 -----------
+
 * [Slim](http://www.slimframework.com/), a PHP Microframework
 * [ender](http://ender.no.de/), the no-library library
 * [toast.css](http://daneden.me/toast/), a simple but complete CSS framework. 
@@ -87,9 +90,11 @@ References:
 
 Live Sample:
 ------------
+
 [piqo.it](http://www.piqo.it), a living demo.
 
 Contact:
 --------
+
 * mail => [michelangelog@gmail.com](mailto://michelangelog@gmail.com)
 * blog => [micheg.blogspot.com](http://micheg.blogspot.com)
