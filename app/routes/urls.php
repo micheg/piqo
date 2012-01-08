@@ -10,20 +10,17 @@ $app->get('/:hash', function ($hash) use ($app)
     try
     {
         $hash = strtolower($hash);
-        $dbh = new PDO($app->config('connection.string'));
-        $qry = $dbh->prepare('SELECT URL FROM URLS WHERE hash = :hash');
-        $qry->bindParam(':hash',$hash,PDO::PARAM_STR);
-        $qry->execute();
-        $first_res = $qry->fetch(PDO::FETCH_ASSOC);
-        if($first_res)
+        ORM_EXT::configure($app->config('connection.string'));
+        $one_url = ORM_EXT::for_table('urls')->where('hash', $hash)->find_one();
+        $url = ($one_url) ? $one_url->url : null;
+        if($url)
         {
-            $app->redirect($first_res['url'], 301);
+            $app->redirect($url, 301);
         }
         else
         {
             $app->render('view_error.php',array('service' => $app->config('service.name'), 'url' => $app->config('service.name') . $hash));
         }
-        $dbh = null;    
     }
     catch(PDOException $e)
     {
@@ -42,28 +39,24 @@ $app->post('/short/', function() use ($app)
     }
     try
     {
-        $dbh = new PDO($app->config('connection.string'));
-        $have_hash = $dbh->prepare('SELECT hash FROM urls WHERE url = :url');
-        $have_hash->bindParam(':url',$url,PDO::PARAM_STR);
-        $have_hash->execute();
-        $hash = $have_hash->fetch(PDO::FETCH_ASSOC);
+        ORM_EXT::configure($app->config('connection.string'));
+        $one_hash = ORM_EXT::for_table('urls')->where('url', $url)->find_one();
+        $hash = ($one_hash) ? $one_hash->hash : null;
         if($hash)
         {
-            $tiny = $hash['hash'];
+            $tiny = $hash;
         }
         else
         {
-            $uniq_result = $dbh->query('SELECT MAX(ID)  as num FROM urls')->fetch(PDO::FETCH_ASSOC);
-            //$uniq_result = $dbh->query('select count(id) as max from urls')->fetch(PDO::FETCH_ASSOC);
-            $next = intval($uniq_result['num']) + 36; // at least 2 char
-            $next = base_convert((string) $next, 10, 36);
-            $qry = $dbh->prepare('INSERT INTO urls(hash, url) VALUES(:hash, :url)');
-            $qry->bindParam(':hash',$next,PDO::PARAM_STR);
-            $qry->bindParam(':url',$url,PDO::PARAM_STR);
-            $qry->execute();
+            $next = (int) ORM_EXT::for_table('urls')->max('id') + 36;
+            $next = base_convert((string) $next, 10, 36); // at least 2 char!
+            // -- insert new record
+            $record = ORM_EXT::for_table('urls')->create();
+            $record->hash = strval($next);
+            $record->url = $url;
+            $record->save();
             $tiny = $next;
         }
-        $dbh = null;
     }    
     catch(PDOException $e)
     {
