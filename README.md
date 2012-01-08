@@ -80,6 +80,7 @@ References:
 * [Slim](http://www.slimframework.com/), a PHP Microframework
 * [ender](http://ender.no.de/), the no-library library
 * [toast.css](http://daneden.me/toast/), a simple but complete CSS framework. 
+* [idiorm.php](https://github.com/j4mie/idiorm), A lightweight nearly-zero-configuration object-relational mapper and fluent query builder for PHP5.
 
 Live Sample:
 ------------
