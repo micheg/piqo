@@ -40,7 +40,7 @@ $app = new Slim(array(
 ));
 
 // application routes
-require './app/routes/urls.php';
+require '../app/routes/urls.php';
 
 // run app!
 $app->run();
