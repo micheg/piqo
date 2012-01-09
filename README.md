@@ -4,6 +4,9 @@ A URL shortening service written in php with slim microframework.
 News:
 -----
 
+*2012 01 09*, *AUTH*: Basic functionality for managing authorized users. Still lack the opportunity to register.
+Probably will be implemented after the custom URL module.
+
 *2012 01 08*, *BASE62*: On request, using a hashing algorithm in base62.
 So the service is no longer case insensitive.
 
