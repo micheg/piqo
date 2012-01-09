@@ -32,10 +32,12 @@
         'templates.path' => '../app/views',
         'connection.string' => 'sqlite:../data/url.sqlite',
         'service.name' => $_SERVER['SERVER_NAME'] . '/',
+        'static_page.path' => '../app/views/static',
     ));
 
     // application routes
     require_once '../app/routes/urls.php';
+    require_once '../app/routes/static.php';
 
     // run app!
     $app->run();
