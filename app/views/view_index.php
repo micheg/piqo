@@ -24,8 +24,8 @@
 
   <div role="content">
     <div class="wrap">
-        <div class="grids">
-            <div class="grid-12">
+      <div class="grids">
+        <div class="grid-12">
           <form action="/short/" method="post">
             <label for="long_url">your url</label>
             <input type='text' name="long_url" id="long_url" placeholder="http://www.example.com/long_url">

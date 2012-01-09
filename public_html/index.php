@@ -37,6 +37,7 @@
 
     // application routes
     require_once '../app/routes/urls.php';
+    require_once '../app/routes/admin.php';
     require_once '../app/routes/static.php';
 
     // run app!
