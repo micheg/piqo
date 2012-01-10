@@ -21,25 +21,17 @@
     {
         return (function () use ( $app, $page, $role )
         {
-            if (!isset($_SESSION['login']))
+            if ( (isset($_SESSION['login'])) && ($_SESSION['role'] == $role) )  return true;
+            if ( (isset($_SESSION['login'])) && ($_SESSION['role'] != $role) )
             {
-                $app->redirect('/login/' . $page, 301);
+                unset ($_SESSION['login']);
+                unset ($_SESSION['username']);
+                unset ($_SESSION['role']);
+                $app->flash('login_error', 'Unauthorized access.<br/>You do not have the necessary privileges.<br/>You have been disconnected from the server.');
             }
-            else
-            {
-                if($_SESSION['role'] != $role)
-                {
-                    unset ($_SESSION['login']);
-                    unset ($_SESSION['username']);
-                    unset ($_SESSION['role']);
-                    $app->flash('login_error', 'Unauthorized access.<br/>You do not have the necessary privileges.<br/>You have been disconnected from the server.');
-                    $app->redirect('/login/' . $page, 301);
-                }
-                else
-                {
-                    return true;
-                }
-            }
+            // generic clean up
+            $_SESSION = array();
+            $app->redirect('/login/' . $page, 301);
         });
     };
     $app->map('/login/:page', function ($page) use ($app)
